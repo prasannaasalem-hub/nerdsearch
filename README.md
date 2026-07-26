@@ -1,14 +1,3 @@
-# NitroStack Starter Template
-
-Minimal template for learning NitroStack fundamentals with a calculator-focused
-MCP server and basic widgets.
-
-## What This Template Includes
-
-- `calculator` module with tools, resources, and prompts
-- TypeScript + Zod validation setup
-- Widget-ready project structure
-- Production-friendly npm scripts
 
 ## Quick Start
 
