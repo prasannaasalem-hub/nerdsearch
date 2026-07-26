@@ -1,0 +1,52 @@
+[
+  {
+    "id": "collection_001",
+    "name": "AI Ethics",
+    "description": "Research on ethical considerations, bias mitigation, and responsible AI deployment in healthcare",
+    "imageUrl": "https://images.unsplash.com/photo-1658806264102-2c516eae5e05?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5OTQ3NTl8MHwxfHNlYXJjaHwxfHxldGhpY3MlMjBwaGlsb3NvcGh5JTIwYWJzdHJhY3QlMjBjb25jZXB0fGVufDF8Mnx8fDE3ODUwMTE3OTR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+    "paperIds": ["paper_003", "paper_005"],
+    "tags": ["ethics", "bias", "transparency", "responsibility"],
+    "createdAt": "2024-01-15T10:30:00Z",
+    "updatedAt": "2024-07-20T14:22:00Z"
+  },
+  {
+    "id": "collection_002",
+    "name": "Deep Learning in Healthcare",
+    "description": "Comprehensive collection of deep learning applications including CNNs, RNNs, and transformers for medical imaging and diagnosis",
+    "imageUrl": "https://images.unsplash.com/photo-1578098576845-51e4ff4305d5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5OTQ3NTl8MHwxfHNlYXJjaHwxfHxkYXRhJTIwc2NpZW5jZSUyMGFuYWx5dGljcyUyMHZpc3VhbGl6YXRpb258ZW58MXwyfHx8MTc4NTAxMTc5NXww&ixlib=rb-4.1.0&q=80&w=1080",
+    "paperIds": ["paper_001", "paper_004", "paper_008"],
+    "tags": ["deep learning", "neural networks", "medical imaging", "CNN", "RNN", "transformers"],
+    "createdAt": "2024-02-01T09:15:00Z",
+    "updatedAt": "2024-07-22T11:45:00Z"
+  },
+  {
+    "id": "collection_003",
+    "name": "Interpretability & Explainability",
+    "description": "Research on making machine learning models interpretable and explainable for clinical decision support",
+    "imageUrl": "https://images.unsplash.com/photo-1750969185331-e03829f72c7d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5OTQ3NTl8MHwxfHNlYXJjaHwyfHxkYXRhJTIwc2NpZW5jZSUyMGFuYWx5dGljcyUyMHZpc3VhbGl6YXRpb258ZW58MXwyfHx8MTc4NTAxMTc5NXww&ixlib=rb-4.1.0&q=80&w=1080",
+    "paperIds": ["paper_006"],
+    "tags": ["interpretability", "explainability", "SHAP", "LIME", "attention"],
+    "createdAt": "2024-03-10T13:20:00Z",
+    "updatedAt": "2024-07-18T16:30:00Z"
+  },
+  {
+    "id": "collection_004",
+    "name": "Privacy-Preserving ML",
+    "description": "Federated learning, differential privacy, and other techniques for privacy-preserving healthcare analytics",
+    "imageUrl": "https://images.unsplash.com/photo-1709651669999-57741c9bf085?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5OTQ3NTl8MHwxfHNlYXJjaHwxfHxuZXVyYWwlMjBuZXR3b3JrJTIwZGVlcCUyMGxlYXJuaW5nJTIwYnJhaW58ZW58MXwyfHx8MTc4NTAxMTc5Nnww&ixlib=rb-4.1.0&q=80&w=1080",
+    "paperIds": ["paper_005"],
+    "tags": ["privacy", "federated learning", "differential privacy", "security"],
+    "createdAt": "2024-04-05T11:00:00Z",
+    "updatedAt": "2024-07-21T09:15:00Z"
+  },
+  {
+    "id": "collection_005",
+    "name": "Advanced ML Techniques",
+    "description": "Cutting-edge machine learning methods including reinforcement learning, multimodal learning, and continual learning",
+    "imageUrl": "https://images.unsplash.com/photo-1719550371336-7bb64b5cacfa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5OTQ3NTl8MHwxfHNlYXJjaHwyfHxuZXVyYWwlMjBuZXR3b3JrJTIwZGVlcCUyMGxlYXJuaW5nJTIwYnJhaW58ZW58MXwyfHx8MTc4NTAxMTc5Nnww&ixlib=rb-4.1.0&q=80&w=1080",
+    "paperIds": ["paper_009", "paper_010", "paper_012"],
+    "tags": ["reinforcement learning", "multimodal", "continual learning", "optimization"],
+    "createdAt": "2024-05-12T14:45:00Z",
+    "updatedAt": "2024-07-23T10:20:00Z"
+  }
+]

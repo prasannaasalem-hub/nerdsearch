@@ -1,0 +1,162 @@
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+import { ToolDecorator as Tool, Widget, z, Injectable } from '@nitrostack/core';
+import * as fs from 'fs';
+import * as path from 'path';
+/**
+ * Discover Tools
+ *
+ * Tools for searching and retrieving academic papers
+ */
+let DiscoverTools = class DiscoverTools {
+    papers = [];
+    constructor() {
+        this.loadPapers();
+    }
+    loadPapers() {
+        try {
+            const fixturesPath = path.join(process.cwd(), 'fixtures', 'papers.json');
+            const data = fs.readFileSync(fixturesPath, 'utf-8');
+            this.papers = JSON.parse(data);
+        }
+        catch (error) {
+            // Fallback to empty array if file not found
+            this.papers = [];
+        }
+    }
+    async searchPapers(input, ctx) {
+        ctx.logger.info('Searching papers', { query: input.query, limit: input.limit });
+        const limit = input.limit || 10;
+        const queryLower = input.query.toLowerCase();
+        // Filter papers based on query and optional filters
+        let results = this.papers.filter((paper) => {
+            const matchesQuery = paper.title.toLowerCase().includes(queryLower) ||
+                paper.abstract.toLowerCase().includes(queryLower) ||
+                paper.keywords.some((k) => k.toLowerCase().includes(queryLower)) ||
+                paper.authors.some((a) => a.toLowerCase().includes(queryLower));
+            const matchesYear = !input.year || paper.year === input.year;
+            const matchesCitations = !input.minCitations || paper.citations >= input.minCitations;
+            return matchesQuery && matchesYear && matchesCitations;
+        });
+        // Sort by citations (descending) for ranking
+        results = results.sort((a, b) => b.citations - a.citations).slice(0, limit);
+        return {
+            query: input.query,
+            results,
+            total: results.length,
+        };
+    }
+    async getPaperDetails(input, ctx) {
+        ctx.logger.info('Getting paper details', { paperId: input.paperId });
+        const paper = this.papers.find((p) => p.id === input.paperId);
+        if (!paper) {
+            throw new Error(`Paper with ID ${input.paperId} not found`);
+        }
+        // Find related papers (papers with overlapping keywords)
+        const relatedPapers = this.papers
+            .filter((p) => p.id !== paper.id)
+            .filter((p) => {
+            const overlap = p.keywords.filter((k) => paper.keywords.includes(k));
+            return overlap.length > 0;
+        })
+            .slice(0, 5)
+            .map((p) => ({
+            id: p.id,
+            title: p.title,
+            authors: p.authors,
+        }));
+        return {
+            ...paper,
+            relatedPapers,
+        };
+    }
+};
+__decorate([
+    Tool({
+        name: 'search-papers',
+        description: 'Search for academic papers on a given topic with optional filters',
+        inputSchema: z.object({
+            query: z.string().describe('Search query (e.g., "machine learning in healthcare")'),
+            limit: z.number().optional().describe('Maximum number of results to return (default: 10)'),
+            year: z.number().optional().describe('Filter by publication year'),
+            minCitations: z.number().optional().describe('Filter by minimum citation count'),
+        }),
+        examples: {
+            request: {
+                query: 'machine learning in healthcare',
+                limit: 5,
+            },
+            response: {
+                query: 'machine learning in healthcare',
+                results: [
+                    {
+                        id: 'paper_001',
+                        title: 'Deep Learning Applications in Healthcare',
+                        authors: ['Sarah Chen', 'Michael Rodriguez'],
+                        abstract: 'This paper surveys...',
+                        journal: 'IEEE Transactions on Medical Imaging',
+                        year: 2024,
+                        doi: '10.1109/TMI.2024.3156789',
+                        imageUrl: 'https://...',
+                        keywords: ['deep learning', 'healthcare'],
+                        citations: 342,
+                    },
+                ],
+                total: 1,
+            },
+        },
+    }),
+    Widget('research-hub'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, Object]),
+    __metadata("design:returntype", Promise)
+], DiscoverTools.prototype, "searchPapers", null);
+__decorate([
+    Tool({
+        name: 'get-paper-details',
+        description: 'Get full details of a specific paper including metadata, keywords, and related sources',
+        inputSchema: z.object({
+            paperId: z.string().describe('The ID of the paper to retrieve'),
+        }),
+        examples: {
+            request: {
+                paperId: 'paper_001',
+            },
+            response: {
+                id: 'paper_001',
+                title: 'Deep Learning Applications in Healthcare',
+                authors: ['Sarah Chen', 'Michael Rodriguez', 'Emily Watson'],
+                abstract: 'This paper surveys...',
+                journal: 'IEEE Transactions on Medical Imaging',
+                year: 2024,
+                doi: '10.1109/TMI.2024.3156789',
+                imageUrl: 'https://...',
+                keywords: ['deep learning', 'healthcare', 'medical imaging'],
+                citations: 342,
+                relatedPapers: [
+                    {
+                        id: 'paper_002',
+                        title: 'Machine Learning for Predictive Healthcare',
+                        authors: ['James Liu'],
+                    },
+                ],
+            },
+        },
+    }),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, Object]),
+    __metadata("design:returntype", Promise)
+], DiscoverTools.prototype, "getPaperDetails", null);
+DiscoverTools = __decorate([
+    Injectable(),
+    __metadata("design:paramtypes", [])
+], DiscoverTools);
+export { DiscoverTools };
+//# sourceMappingURL=discover.tools.js.map

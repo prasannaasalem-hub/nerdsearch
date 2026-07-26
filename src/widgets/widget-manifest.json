@@ -1,0 +1,251 @@
+{
+  "version": "1.0.0",
+  "widgets": [
+    {
+      "uri": "/calculator-result",
+      "name": "Calculator Result",
+      "description": "Displays the result of a calculation with operation details",
+      "examples": [
+        {
+          "name": "Addition Example",
+          "description": "Shows the result of adding 5 + 3",
+          "data": {
+            "operation": "add",
+            "a": 5,
+            "b": 3,
+            "result": 8,
+            "expression": "5 + 3 = 8"
+          }
+        },
+        {
+          "name": "Multiplication Example",
+          "description": "Shows the result of multiplying 6 × 7",
+          "data": {
+            "operation": "multiply",
+            "a": 6,
+            "b": 7,
+            "result": 42,
+            "expression": "6 × 7 = 42"
+          }
+        },
+        {
+          "name": "Division Example",
+          "description": "Shows the result of dividing 20 ÷ 4",
+          "data": {
+            "operation": "divide",
+            "a": 20,
+            "b": 4,
+            "result": 5,
+            "expression": "20 ÷ 4 = 5"
+          }
+        }
+      ],
+      "tags": ["calculator", "math", "result"]
+    },
+    {
+      "uri": "/research-hub",
+      "name": "Research Hub",
+      "description": "Dual-pane widget showing research papers and collections",
+      "examples": [
+        {
+          "name": "Search Results Example",
+          "description": "Shows papers from a search query",
+          "data": {
+            "query": "machine learning in healthcare",
+            "results": [
+              {
+                "id": "paper_001",
+                "title": "Deep Learning Applications in Healthcare",
+                "authors": ["Sarah Chen", "Michael Rodriguez"],
+                "abstract": "This paper surveys the latest advances in deep learning for medical imaging...",
+                "journal": "IEEE Transactions on Medical Imaging",
+                "year": 2024,
+                "doi": "10.1109/TMI.2024.3156789",
+                "imageUrl": "https://images.unsplash.com/photo-1668903678361-a226a2b9731e",
+                "keywords": ["deep learning", "healthcare"],
+                "citations": 342
+              }
+            ],
+            "total": 1
+          }
+        },
+        {
+          "name": "Collections Example",
+          "description": "Shows user research collections",
+          "data": {
+            "collections": [
+              {
+                "id": "collection_001",
+                "name": "AI Ethics",
+                "description": "Research on ethical considerations in AI",
+                "imageUrl": "https://images.unsplash.com/photo-1658806264102-2c516eae5e05",
+                "paperCount": 2,
+                "tags": ["ethics", "bias", "transparency"]
+              }
+            ],
+            "total": 1
+          }
+        }
+      ],
+      "tags": ["research", "papers", "collections"]
+    },
+    {
+      "uri": "/github-hub",
+      "name": "GitHub Hub",
+      "description": "Shows GitHub projects related to a search topic",
+      "examples": [
+        {
+          "name": "Project Search Example",
+          "description": "Shows GitHub projects for a topic",
+          "data": {
+            "query": "voice assistant",
+            "language": "typescript",
+            "projects": [
+              {
+                "id": "repo_001",
+                "name": "sample-repo",
+                "url": "https://github.com/example/sample-repo",
+                "description": "Sample typescript project for voice assistant.",
+                "stars": 123,
+                "language": "TypeScript"
+              }
+            ]
+          }
+        }
+      ],
+      "tags": ["github", "projects"]
+    },
+    {
+      "uri": "/github-repos-search",
+      "name": "GitHub Repository Search",
+      "description": "Shows GitHub repositories matching search filters with rate limit info",
+      "examples": [
+        {
+          "name": "Repository Search Example",
+          "description": "Shows repositories for a query",
+          "data": {
+            "query": "machine learning in healthcare",
+            "results": [
+              {
+                "id": 12345,
+                "name": "ml-healthcare",
+                "full_name": "user/ml-healthcare",
+                "url": "https://github.com/user/ml-healthcare",
+                "description": "Machine learning for healthcare applications",
+                "stars": 1250,
+                "language": "Python",
+                "topics": ["machine-learning", "healthcare"],
+                "license": "MIT",
+                "updated_at": "2024-01-15T10:30:00Z"
+              }
+            ],
+            "total": 1,
+            "rateLimit": { "remaining": 59, "reset": 1234567890 }
+          }
+        }
+      ],
+      "tags": ["github", "repositories"]
+    },
+    {
+      "uri": "/dataset-hub",
+      "name": "Dataset Hub",
+      "description": "Shows datasets matching a search query",
+      "examples": [
+        {
+          "name": "Dataset Search Example",
+          "description": "Shows datasets for a topic",
+          "data": {
+            "query": "medical imaging",
+            "source": "Kaggle",
+            "results": [
+              {
+                "id": "dataset_001",
+                "name": "Sample Dataset for medical imaging",
+                "source": "Kaggle",
+                "description": "A sample dataset for medical imaging.",
+                "url": "https://example.com/datasets/sample",
+                "size": "2GB",
+                "tags": ["sample", "demo"]
+              }
+            ],
+            "total": 1
+          }
+        }
+      ],
+      "tags": ["dataset", "data"]
+    },
+    {
+      "uri": "/learning-hub",
+      "name": "Learning Hub",
+      "description": "Shows a step-by-step learning roadmap for a topic",
+      "examples": [
+        {
+          "name": "Roadmap Example",
+          "description": "Shows a roadmap for a topic",
+          "data": {
+            "topic": "machine learning",
+            "level": "beginner",
+            "roadmap": [
+              { "step": 1, "title": "Understand core concepts", "description": "Learn the fundamentals of machine learning." },
+              { "step": 2, "title": "Practice with examples", "description": "Build small projects to reinforce learning." },
+              { "step": 3, "title": "Read documentation", "description": "Explore official docs and guides." }
+            ]
+          }
+        }
+      ],
+      "tags": ["learning", "roadmap"]
+    },
+    {
+      "uri": "/architect-hub",
+      "name": "Architect Hub",
+      "description": "Shows a project blueprint combining research, datasets, GitHub, hardware, and learning",
+      "examples": [
+        {
+          "name": "Blueprint Example",
+          "description": "Shows a blueprint for a project",
+          "data": {
+            "projectName": "Smart Garden",
+            "domain": "IoT",
+            "blueprint": {
+              "research": "Gather academic papers and domain research on IoT.",
+              "datasets": "Find datasets relevant to IoT.",
+              "github": "Study existing GitHub repos and starter projects for IoT.",
+              "hardware": "Choose hardware suitable for IoT projects.",
+              "learning": "Create a learning roadmap for IoT."
+            }
+          }
+        }
+      ],
+      "tags": ["architect", "blueprint"]
+    },
+    {
+      "uri": "/hardware-hub",
+      "name": "Hardware Hub",
+      "description": "Shows hardware component recommendations for a project",
+      "examples": [
+        {
+          "name": "Hardware Recommendations Example",
+          "description": "Shows hardware suggestions for a project type",
+          "data": {
+            "projectType": "robotics",
+            "budget": "low",
+            "recommendations": [
+              {
+                "component": "ESP32",
+                "useCase": "Wireless control and sensor integration",
+                "notes": "Good for IoT and robotics projects with Wi-Fi/Bluetooth needs."
+              },
+              {
+                "component": "Raspberry Pi",
+                "useCase": "Higher compute and multimedia support",
+                "notes": "Best for more advanced projects and computer vision."
+              }
+            ]
+          }
+        }
+      ],
+      "tags": ["hardware", "components"]
+    }
+  ],
+  "generatedAt": "2025-01-01T00:00:00.000Z"
+}
